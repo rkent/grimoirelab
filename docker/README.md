@@ -39,7 +39,7 @@ repositories and data sources, you need to modify [`projects.json`](../default-g
 and [`setup.cfg`](../default-grimoirelab-settings/setup.cfg) files. See 
 [below](#more-information) more information about these files format.
 
-You also need a SortingHat server running at http://localhost:8000/identities.
+You also need a SortingHat server running at http://localhost:9000/identities.
 See [Sortinghat for more information](https://github.com/chaoss/grimoirelab-sortinghat)
 
 Default configuration files assumes Elasticsearch is available in port 9200, 

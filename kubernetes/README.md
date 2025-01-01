@@ -41,10 +41,10 @@ Launch your browser and navigate to `http://localhost:5601`, and login with the 
 To manage the contributors identities, you may port-forward the [Hatstall](https://github.com/chaoss/grimoirelab-hatstall) application as well.
 
 ```console
-kubectl port-forward service/hatstall 8000:80 -n grimoire
+kubectl port-forward service/hatstall 9000:80 -n grimoire
 ```
 
-Once forwarded, access your browser at `http://localhost:8000`, and login using the user name `admin`, and password `admin`
+Once forwarded, access your browser at `http://localhost:9000`, and login using the user name `admin`, and password `admin`
 
 ---
 
