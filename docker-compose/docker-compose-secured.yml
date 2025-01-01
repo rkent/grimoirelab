@@ -70,7 +70,7 @@ services:
         - SORTINGHAT_SUPERUSER_USERNAME=root
         - SORTINGHAT_SUPERUSER_PASSWORD=root
         - SORTINGHAT_ALLOWED_HOST=sortinghat,nginx,localhost,127.0.0.1,[::1]
-        - SORTINGHAT_CORS_ALLOWED_ORIGINS=http://localhost:8000,http://127.0.0.1:8000
+        - SORTINGHAT_CORS_ALLOWED_ORIGINS=http://localhost:9000,http://127.0.0.1:9000
       expose:
         - "9314"
       volumes:
@@ -106,13 +106,13 @@ services:
         - ../default-grimoirelab-settings/uwsgi_params:/etc/nginx/uwsgi_params
         - sortinghat-static:/sortinghat:ro
       ports:
-        - 8000:8000
+        - 9000:9000
       environment:
         - KIBANA_HOST=http://kibiter:5601/
       depends_on:
         - sortinghat
       healthcheck:
-        test: "curl -s --head http://localhost:8000/identities/api/ | grep Set-Cookie || exit 1"
+        test: "curl -s --head http://localhost:9000/identities/api/ | grep Set-Cookie || exit 1"
         retries: 5
 
 volumes:

@@ -69,10 +69,10 @@ docker-compose up -d
 ```
 
 If everything goes well, data will be gathered and processed. To get access to
-them, go to `http://localhost:8000/`
+them, go to `http://localhost:9000/`
 
 To manage contributors profile information with [SortingHat](https://github.com/chaoss/grimoirelab-sortinghat),
-go to `http://localhost:8000/identities/`. To get access:
+go to `http://localhost:9000/identities/`. To get access:
 * User: `root`
 * Pass: `root`
 
