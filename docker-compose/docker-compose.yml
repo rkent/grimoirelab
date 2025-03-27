@@ -11,6 +11,8 @@ services:
       healthcheck:
         test: [ "CMD", "/usr/local/bin/healthcheck.sh", "--su=root", "--connect", "--innodb_initialized" ]
         retries: 5
+      volumes:
+         - /srv/disks/data2/grimoirelabs/mysql:/var/lib/mysql
 
     redis:
       image: redis:latest
@@ -28,6 +30,8 @@ services:
       environment:
         - ES_JAVA_OPTS=-Xms2g -Xmx2g
         - ANONYMOUS_USER=true
+      volumes:
+        - /srv/disks/data2/grimoirelabs/elasticsearch:/usr/share/elasticsearch/data
 
     kibiter:
       restart: on-failure:5
@@ -68,7 +72,7 @@ services:
         - SORTINGHAT_SUPERUSER_USERNAME=root
         - SORTINGHAT_SUPERUSER_PASSWORD=root
         - SORTINGHAT_ALLOWED_HOST=sortinghat,nginx,localhost,127.0.0.1,[::1]
-        - SORTINGHAT_CORS_ALLOWED_ORIGINS=http://localhost:9000,http://127.0.0.1:9000
+        - SORTINGHAT_CORS_ALLOWED_ORIGINS=http://localhost:8000,http://127.0.0.1:8000
       expose:
         - "9314"
       volumes:
@@ -104,13 +108,13 @@ services:
         - ../default-grimoirelab-settings/uwsgi_params:/etc/nginx/uwsgi_params
         - sortinghat-static:/sortinghat:ro
       ports:
-        - 9000:9000
+        - 8000:8000
       environment:
         - KIBANA_HOST=http://kibiter:5601/
       depends_on:
         - sortinghat
       healthcheck:
-        test: "curl -s --head http://localhost:9000/identities/api/ | grep Set-Cookie || exit 1"
+        test: "curl -s --head http://localhost:8000/identities/api/ | grep Set-Cookie || exit 1"
         retries: 5
 
 volumes:
